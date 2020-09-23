@@ -8,6 +8,7 @@ import VFor from '../views/VFor.vue'
 import VIf from '../views/VIf.vue'
 import Select from '../views/Select.vue'
 import Modal from '../views/Modal.vue'
+import Input from '../views/Input.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
         path: '/modal',
         name: 'Modal',
         component: Modal
+      },
+      {
+        path: '/input',
+        name: 'Input',
+        component: Input
       }
     ]
   }

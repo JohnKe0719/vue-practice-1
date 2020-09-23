@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <Menu mode="horizontal" active-name="Home">
+        <Menu mode="horizontal">
             <MenuItem v-for="item in menu" :key="item.name" :name="item.name" :to="item.path">
               {{ item.name }}
             </MenuItem>
