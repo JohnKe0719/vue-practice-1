@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <Menu mode="horizontal">
-            <MenuItem v-for="item in menu" :key="item.name" :name="item.name" :to="item.path">
+            <MenuItem v-for="item in menu" :key="item.name" :name="item.name" :to="{ name:item.name, path:item.path}">
               {{ item.name }}
             </MenuItem>
         </Menu>

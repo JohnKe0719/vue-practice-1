@@ -9,6 +9,7 @@ import VIf from '../views/VIf.vue'
 import Select from '../views/Select.vue'
 import Modal from '../views/Modal.vue'
 import Input from '../views/Input.vue'
+import Poker from '../views/Poker.vue'
 
 Vue.use(VueRouter)
 
@@ -17,46 +18,52 @@ const routes = [
     path: '/',
     name: 'Main',
     component: Main,
+    redirect: '/home',
     children: [
       {
-        path: '/home',
+        path: 'home',
         name: 'Home',
         component: Home
       },
       {
-        path: '/about',
+        path: 'about',
         name: 'About',
         component: About
       },
       {
-        path: '/v-model',
+        path: 'v-model',
         name: 'VModel',
         component: VModel
       },
       {
-        path: '/v-for',
+        path: 'v-for',
         name: 'VFor',
         component: VFor
       },
       {
-        path: '/v-if',
+        path: 'v-if',
         name: 'VIf',
         component: VIf
       },
       {
-        path: '/select',
+        path: 'select',
         name: 'Select',
         component: Select
       },
       {
-        path: '/modal',
+        path: 'modal',
         name: 'Modal',
         component: Modal
       },
       {
-        path: '/input',
+        path: 'input',
         name: 'Input',
         component: Input
+      },
+      {
+        path: 'poker',
+        name: 'Poker',
+        component: Poker
       }
     ]
   }
@@ -80,11 +87,9 @@ function getRouterMenu () {
 const routerMenu = getRouterMenu()
 
 router.beforeEach(function (to, from, next) {
-  const check = routes[0].children.some((item, index, array) => item.path === to.fullPath)
+  const check = routes[0].children.some((item, index, array) => item.name === to.name)
   if (check) {
     next()
-  } else if (from.fullPath === '/') {
-    next('/home')
   } else {
     next(false)
   }

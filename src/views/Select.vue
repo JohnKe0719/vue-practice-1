@@ -12,7 +12,7 @@
     <br>
     <h3>您選擇的牌為: {{ nowSelectColor }}{{nowSelectNumber}}</h3>
     <br><br>
-    <Row justify="center" align="center">
+    <Row justify="center" align="middle">
       <Col>
         <h2>牌桌：</h2>
       </Col>
