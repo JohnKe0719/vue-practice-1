@@ -173,18 +173,17 @@ export default {
       this.setPokerDeck(colorName, cardNumber, 'Remove')
       this.board.splice(index, 1)
     },
-    setPokerDeck (colorName, cardNumber, action = 'Add') {
+    // simple poker card set function
+    setPokerDeck (cardNumber, action = 'Add') {
       const actionCheck = action === 'Add'
-      const pair = this.board.filter((item, index, array) => item.number === cardNumber)
-      if (pair.length === 2) {
-        actionCheck ? this.deck[0].count++ : this.deck[0].count--
-      } else if (pair.length === 3) {
-        actionCheck ? this.deck[1].count++ : this.deck[1].count--
-        actionCheck ? this.deck[0].count-- : this.deck[0].count++
-      } else if (pair.length === 4) {
-        actionCheck ? this.deck[2].count++ : this.deck[2].count--
-        actionCheck ? this.deck[1].count-- : this.deck[1].count++
+      const setCount = this.board.filter(item => item.number === cardNumber).length
+      const setMapping = {
+        2: 'pair',
+        3: 'trips',
+        4: 'squads'
       }
+      actionCheck ? this.deck[setMapping[setCount]]++ : this.deck[setMapping[setCount]]--
+      actionCheck && this.deck[setMapping[setCount] - 1] ? this.deck[setMapping[setCount] - 1]-- : this.deck[setMapping[setCount] - 1]++
     },
     getTargetScore () {
       let score = 0
